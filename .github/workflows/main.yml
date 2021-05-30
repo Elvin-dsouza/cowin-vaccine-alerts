@@ -1,0 +1,34 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+name: Build and Release Apps
+jobs:
+  build:
+    name: Build Apps
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Set up Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+      - name: Install pub Dependencies
+        run: flutter pub get
+      - name: Run Tests
+        run: flutter test
+      - name: Build Android App
+        run: flutter build apk --split-per-abi
+      - name: Build Web App
+        run: |
+          flutter build web
+          cd build/web
+          zip -r web-app.zip .
+
