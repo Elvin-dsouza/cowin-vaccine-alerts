@@ -1,4 +1,5 @@
 # cowin_notification_app
+[![Build and Release Apps](https://github.com/Elvin-dsouza/cowin-vaccine-alerts/actions/workflows/main.yml/badge.svg)](https://github.com/Elvin-dsouza/cowin-vaccine-alerts/actions/workflows/main.yml)
 App for notifying users on available vaccination sessions based on the users pincode age and the dose number.
 
 <img src="https://user-images.githubusercontent.com/14183019/119293363-e4be4a80-bc6f-11eb-847b-d25f2db66080.jpg" data-canonical-src="https://user-images.githubusercontent.com/14183019/119293363-e4be4a80-bc6f-11eb-847b-d25f2db66080.jpg" width="200" />
