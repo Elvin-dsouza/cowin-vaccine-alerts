@@ -22,7 +22,12 @@ void callbackDispatcher() {
           await GetAvailableSessions.getAvailableSessionsForOneMonth(
               pinCode, age, DateTime.now(), dose);
       if (availableCenters.length > 0) {
+        prefs.setString("lastUpdatedOn",
+            "Vaccination sessions are available, last updated on ${DateTime.now().toLocal().toString()}");
         NotificationManager.createAvailableNotification(availableCenters);
+      } else {
+        prefs.setString("lastUpdatedOn",
+            "No Vaccination sessions are available, last updated on ${DateTime.now().toLocal().toString()}");
       }
     }
     return Future.value(true);
@@ -66,6 +71,7 @@ class _InputFiltersState extends State<InputFilters> {
   String filterAgeRestrictions = "";
   String filterDose = "1";
   bool enableNotifications = false;
+  String lastUpdatedOn = "";
   SharedPreferences prefs;
   @override
   Widget build(BuildContext context) {
@@ -164,6 +170,16 @@ class _InputFiltersState extends State<InputFilters> {
                               : "Notifications are disabled"))
                     ],
                   ),
+                  Row(
+                    children: [
+                      Icon(Icons.timeline_outlined, color: Colors.blue),
+                      Flexible(
+                          child:
+                              lastUpdatedOn != null && lastUpdatedOn.length > 0
+                                  ? Text("$lastUpdatedOn")
+                                  : null)
+                    ],
+                  ),
                   // ElevatedButton(
                   //     onPressed: () async {
                   //       List<String> availableCenters =
@@ -195,6 +211,7 @@ class _InputFiltersState extends State<InputFilters> {
       filterAgeRestrictions = prefs.getString("filterAgeRestrictions");
       enableNotifications = prefs.getBool("enableNotifications") ?? false;
       filterDose = prefs.getString("filterDose");
+      lastUpdatedOn = prefs.getString("lastUpdatedOn");
     });
     if (enableNotifications == true) {
       Workmanager().registerPeriodicTask(

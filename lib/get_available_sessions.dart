@@ -17,7 +17,7 @@ class GetAvailableSessions {
       final List centers = json.decode(response.body)["centers"];
       centers.forEach((f) {
         f["sessions"].forEach((session) {
-          if (session["min_age_limit"] >= int.parse(minAgeLimit, radix: 10) &&
+          if (session["min_age_limit"] == int.parse(minAgeLimit, radix: 10) &&
               session["available_capacity_dose$dose"] > 0) {
             if (!output.contains(f["name"])) {
               output.add(f["name"]);
