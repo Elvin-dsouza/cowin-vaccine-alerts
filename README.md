@@ -7,12 +7,13 @@ Uses the Government of India's public cowin API's to determine vaccine availabli
 https://apisetu.gov.in/public/marketplace/api/cowin/
 
 ## Supported Buiild Targets
--[x] Android
--[ ] IOS
--[x] Linux Desktop
--[ ] web
+- [x] Android
+- [x] Linux Desktop
+- [ ] IOS
+- [ ] web
 
 ## Prerequisites
 Follow the instructions on the flutter getting started link to setup the development environment to build the application.
+
 ### Flutter
 https://flutter.dev/docs/get-started/install
