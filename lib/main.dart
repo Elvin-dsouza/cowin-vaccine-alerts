@@ -89,14 +89,6 @@ class _InputFiltersState extends State<InputFilters> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                  TextFormField(
-                      controller: filterPinController,
-                      decoration: InputDecoration(
-                          hintText: "Enter Pin Code", labelText: "Pin Code")),
-                  TextFormField(
-                      controller: filterAgeController,
-                      decoration: InputDecoration(
-                          hintText: "Enter Age Restriction", labelText: "Age")),
                   DropdownButtonFormField(
                       value: filterDose,
                       decoration: InputDecoration(labelText: "Dose#"),
@@ -113,6 +105,14 @@ class _InputFiltersState extends State<InputFilters> {
                           filterDose = value;
                         });
                       }),
+                  TextFormField(
+                      controller: filterPinController,
+                      decoration: InputDecoration(
+                          hintText: "Pin Code", labelText: "Pin Code")),
+                  TextFormField(
+                      controller: filterAgeController,
+                      decoration: InputDecoration(
+                          hintText: "Age Group", labelText: "Age")),
                   Container(
                     child: Row(
                       children: [
